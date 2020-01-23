@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/square.png" type="Texture" id=2]
+[ext_resource path="res://Assets/titletext.png" type="Texture" id=3]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="square" type="Sprite" parent="VBoxContainer"]
+position = Vector2( 300, 360 )
+texture = ExtResource( 2 )
+
+[node name="titletext" type="Sprite" parent="VBoxContainer"]
+position = Vector2( 633.2, 646.4 )
+texture = ExtResource( 3 )

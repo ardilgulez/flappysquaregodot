@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Actors/Block.gd" type="Script" id=1]
+[ext_resource path="res://Assets/block4.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 60 )
+
+[node name="BlockFour" type="Area2D"]
+script = ExtResource( 1 )
+xSpeed = -200.0
+
+[node name="block4" type="Sprite" parent="."]
+position = Vector2( 50, 360 )
+texture = ExtResource( 2 )
+
+[node name="TopCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 50, 100 )
+shape = SubResource( 1 )
+
+[node name="BottomCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 50, 660 )
+shape = SubResource( 2 )
