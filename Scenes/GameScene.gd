@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 func _on_Square_death() -> void:
 	for child in get_children():
 		if child.is_in_group("blocks"):
-			child.xSpeed = 0.0
 			child.queue_free()
+
+func _on_Square_finish_death() -> void:
 	get_tree().change_scene("res://Scenes/EndGame.tscn")
