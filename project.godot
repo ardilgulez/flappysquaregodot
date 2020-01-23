@@ -48,6 +48,7 @@ endgame_up={
 2d_physics/layer_1="square"
 2d_physics/layer_2="blocks"
 2d_physics/layer_3="ground"
+2d_physics/layer_4="score"
 
 [rendering]
 

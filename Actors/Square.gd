@@ -12,6 +12,7 @@ var dead: bool = false
 signal death
 signal finish_death
 signal start
+signal score
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -44,3 +45,7 @@ func _physics_process(delta: float) -> void:
 func _on_BlockChecker_area_entered(area: Area2D) -> void:
 	velocity = Vector2(0, -ySpeed)
 	dead = true
+
+
+func _on_ScoreChecker_area_entered(area: Area2D) -> void:
+	emit_signal("score")

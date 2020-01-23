@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/GameScene.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Square.tscn" type="PackedScene" id=2]
@@ -7,6 +7,14 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 20 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Assets/montserrat_extrabold.otf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 2 )
 
 [node name="Game Scene" type="Node2D" groups=[
 "blocks",
@@ -41,8 +49,22 @@ position = Vector2( 635.6, 646 )
 texture = ExtResource( 3 )
 
 [node name="SkyBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 600.0
+margin_top = 80.0
+margin_right = 680.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
 [connection signal="death" from="Square" to="." method="_on_Square_death"]
 [connection signal="finish_death" from="Square" to="." method="_on_Square_finish_death"]
+[connection signal="score" from="Square" to="." method="_on_Square_score"]
 [connection signal="start" from="Square" to="." method="_on_Square_start"]
 
 [editable path="Square"]

@@ -10,7 +10,11 @@ var blockArray = [BlockOne, BlockTwo, BlockThree, BlockFour]
 var time = 0
 var nextTime = 0
 var spawnBlocks = false
+var score = 0
 export var frequency = 0.5
+
+func _ready() -> void:
+	get_node("CanvasLayer/Label").visible = false
 
 func _process(delta: float) -> void:
 	if not spawnBlocks:
@@ -35,3 +39,9 @@ func _on_Square_finish_death() -> void:
 func _on_Square_start() -> void:
 	spawnBlocks = true
 	get_node("titletext").visible = false
+	get_node("CanvasLayer/Label").visible = true
+
+
+func _on_Square_score() -> void:
+	score += 1
+	get_node("CanvasLayer/Label").text = str(score)
