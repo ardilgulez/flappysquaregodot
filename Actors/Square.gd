@@ -17,7 +17,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func input_process() -> void:
-	if Input.is_action_pressed("jump") and not dead:
+	if Input.is_action_just_pressed("jump") and not dead:
 		if not started:
 			started = true
 			emit_signal("start")
