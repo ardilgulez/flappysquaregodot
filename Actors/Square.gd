@@ -11,13 +11,16 @@ var dead: bool = false
 
 signal death
 signal finish_death
+signal start
 
 func _ready() -> void:
 	pass # Replace with function body.
 
 func input_process() -> void:
 	if Input.is_action_pressed("jump") and not dead:
-		started = true
+		if not started:
+			started = true
+			emit_signal("start")
 		if position.y < 0:
 			velocity = Vector2.ZERO
 		else:
@@ -25,6 +28,8 @@ func input_process() -> void:
 
 func _physics_process(delta: float) -> void:
 	input_process()
+	if not started:
+		return
 	velocity = move_and_slide(velocity)
 	if dead:
 		emit_signal("death")
@@ -39,5 +44,3 @@ func _physics_process(delta: float) -> void:
 func _on_BlockChecker_area_entered(area: Area2D) -> void:
 	velocity = Vector2(0, -ySpeed)
 	dead = true
-	started = false
-	

@@ -9,15 +9,18 @@ var blockArray = [BlockOne, BlockTwo, BlockThree, BlockFour]
 
 var time = 0
 var nextTime = 0
+var spawnBlocks = false
 export var frequency = 0.5
 
 func _process(delta: float) -> void:
+	if not spawnBlocks:
+		return
 	time += delta
 	if time > nextTime:
 		var nextBlockIndex = int(floor(rand_range(0, 4)))
 		nextTime += 1 / frequency
 		var block = blockArray[nextBlockIndex].instance()
-		block.position.x = 1380 - (block.xSpeed * time - nextTime)
+		block.position.x = 720 - (block.xSpeed * (time - nextTime))
 		block.add_to_group("blocks")
 		add_child(block)
 
@@ -28,3 +31,7 @@ func _on_Square_death() -> void:
 
 func _on_Square_finish_death() -> void:
 	get_tree().change_scene("res://Scenes/EndGame.tscn")
+
+func _on_Square_start() -> void:
+	spawnBlocks = true
+	get_node("titletext").visible = false
