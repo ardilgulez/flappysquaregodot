@@ -17,7 +17,7 @@ script = ExtResource( 1 )
 editor/display_folded = true
 position = Vector2( 300, 360 )
 gravity = 800.0
-ySpeed = -200.0
+ySpeed = -275.0
 
 [node name="Camera2D" parent="Square" index="1"]
 limit_left = 0
@@ -41,10 +41,6 @@ position = Vector2( 635.6, 646 )
 texture = ExtResource( 3 )
 
 [node name="SkyBackground" parent="." instance=ExtResource( 4 )]
-
-[node name="SkyParallaxLayer" parent="SkyBackground" index="0"]
-z_index = -1
-motion_mirroring = Vector2( 1280, 0 )
 [connection signal="death" from="Square" to="." method="_on_Square_death"]
 [connection signal="finish_death" from="Square" to="." method="_on_Square_finish_death"]
 [connection signal="start" from="Square" to="." method="_on_Square_start"]

@@ -37,5 +37,6 @@ texture = ExtResource( 5 )
 
 [node name="SkyParallaxLayer" parent="SkyBackground" index="0"]
 z_index = -1
+parallaxSpeed = 0.0
 
 [editable path="SkyBackground"]
