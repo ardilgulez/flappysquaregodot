@@ -9,13 +9,13 @@ var blockArray = [BlockOne, BlockTwo, BlockThree, BlockFour]
 
 var time = 0
 var nextTime = 0
-export var frequency = 3
+export var frequency = 0.5
 
 func _process(delta: float) -> void:
 	time += delta
 	if time > nextTime:
 		var nextBlockIndex = int(floor(rand_range(0, 4)))
-		nextTime += frequency
+		nextTime += 1 / frequency
 		var block = blockArray[nextBlockIndex].instance()
 		block.position.x = 1380 - (block.xSpeed * time - nextTime)
 		block.add_to_group("blocks")
@@ -24,4 +24,6 @@ func _process(delta: float) -> void:
 func _on_Square_death() -> void:
 	for child in get_children():
 		if child.is_in_group("blocks"):
+			child.xSpeed = 0.0
 			child.queue_free()
+	get_tree().change_scene("res://Scenes/EndGame.tscn")

@@ -26,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	if dead and position.y > 688:
 		velocity = Vector2.ZERO
+		emit_signal("death")
 	else:
 		velocity.y += (gravity * delta)
 
 func _on_BlockChecker_area_entered(area: Area2D) -> void:
-	emit_signal("death")
 	velocity = Vector2(0, -ySpeed)
 	dead = true
 	started = false

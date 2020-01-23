@@ -13,7 +13,8 @@ script = ExtResource( 1 )
 
 [node name="Square" parent="." instance=ExtResource( 2 )]
 position = Vector2( 300, 360 )
-gravity = 100.0
+gravity = 200.0
+ySpeed = -160.0
 
 [node name="Camera2D" parent="Square" index="1"]
 limit_left = 0
