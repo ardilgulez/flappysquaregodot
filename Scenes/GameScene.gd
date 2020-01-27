@@ -39,6 +39,7 @@ func _on_Square_death() -> void:
 			child.queue_free()
 
 func _on_Square_finish_death() -> void:
+	get_node("EndGameMenu/EndGameScore").text += "\n" + str(score)
 	get_node("InGameScore/Label").visible = false
 	get_node("EndGameMenu").visible = true
 

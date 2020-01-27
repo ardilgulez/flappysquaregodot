@@ -8,6 +8,7 @@ var velocity: Vector2 = Vector2(0, ySpeed)
 
 var started: bool = false
 var dead: bool = false
+var finishDead: bool = false
 
 signal death
 signal finish_death
@@ -29,14 +30,15 @@ func input_process() -> void:
 
 func _physics_process(delta: float) -> void:
 	input_process()
-	if not started:
+	if not started or finishDead:
 		return
 	velocity = move_and_slide(velocity)
-	if dead:
+	if dead and not finishDead:
 		emit_signal("death")
 		if position.y > 688:
 			velocity = Vector2.ZERO
 			emit_signal("finish_death")
+			finishDead = true
 		else:
 			velocity = Vector2(0, deathSpeed)
 	else:
