@@ -48,4 +48,5 @@ func _on_BlockChecker_area_entered(area: Area2D) -> void:
 
 
 func _on_ScoreChecker_area_entered(area: Area2D) -> void:
-	emit_signal("score")
+	if not dead:
+		emit_signal("score")
